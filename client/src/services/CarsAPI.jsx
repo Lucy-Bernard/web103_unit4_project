@@ -1,18 +1,18 @@
 const CarsAPI = {
   getAllCars: async () => {
-    const response = await fetch("/custom-items");
+    const response = await fetch("/api/custom-items");
     const data = await response.json();
     return data;
   },
 
   getCar: async (itemId) => {
-    const response = await fetch(`/custom-items/${itemId}`);
+    const response = await fetch(`/api/custom-items/${itemId}`);
     const data = await response.json();
     return data;
   },
 
   createCar: async (car) => {
-    const response = await fetch("/custom-items", {
+    const response = await fetch("/api/custom-items", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(car),
@@ -22,7 +22,7 @@ const CarsAPI = {
   },
 
   updateCar: async (itemId, car) => {
-    const response = await fetch(`/custom-items/${itemId}`, {
+    const response = await fetch(`/api/custom-items/${itemId}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(car),
@@ -32,11 +32,9 @@ const CarsAPI = {
   },
 
   deleteCar: async (itemId) => {
-    const response = await fetch(`/custom-items/${itemId}`, {
+    const response = await fetch(`/api/custom-items/${itemId}`, {
       method: "DELETE",
     });
-    const data = await response.json();
-    return data;
   },
 };
 

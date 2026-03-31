@@ -39,7 +39,7 @@ const ViewCars = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+            gridTemplateColumns: "repeat(3, 1fr)",
             gap: "20px",
             width: "100%",
           }}

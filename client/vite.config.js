@@ -16,7 +16,7 @@ export default defineConfig({
   },
   server: {
     proxy: {
-      "/custom-items": {
+      "/api": {
         target: "http://localhost:3000",
       },
     },

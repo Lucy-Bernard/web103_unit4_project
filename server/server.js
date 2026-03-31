@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // specify the api path for the server to use
-app.use("/custom-items", customItemsRouter);
+app.use("/api/custom-items", customItemsRouter);
 
 if (process.env.NODE_ENV === "production") {
   app.get("/*", (_, res) => res.sendFile(path.resolve("public", "index.html")));

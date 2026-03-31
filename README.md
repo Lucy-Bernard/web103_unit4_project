@@ -1,10 +1,10 @@
-# WEB103 Project 4 - _Name of App Here_
+# WEB103 Project 4 - _BYOC - Build Your Own Car_
 
 Submitted by: **Lucy Bernard**
 
-About this web app: **App description here**
+About this web app: **A website dedicated to helping usesrs customize their own cars.**
 
-Time spent: **X** hours
+Time spent: **5** hours
 
 ## Required Features
 
@@ -12,21 +12,21 @@ The following **required** functionality is completed:
 
 <!-- Make sure to check off completed functionality below -->
 
-- [ ] **The web app uses React to display data from the API.**
-- [ ] **The web app is connected to a PostgreSQL database, with an appropriately structured `CustomItem` table.**
-  - [ ] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
-  - [ ] **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT \* FROM tablename;' to display your table contents.**
-- [ ] **Users can view **multiple** features of the `CustomItem` (e.g. car) they can customize, (e.g. wheels, exterior, etc.)**
-- [ ] **Each customizable feature has multiple options to choose from (e.g. exterior could be red, blue, black, etc.)**
-- [ ] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose.**
-- [ ] **The price of the `CustomItem` (e.g. car) changes dynamically as different options are selected _OR_ The app displays the total price of all features.**
-- [ ] **The visual interface changes in response to at least one customizable feature.**
-- [ ] **The user can submit their choices to save the item to the list of created `CustomItem`s.**
-- [ ] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
-- [ ] **Users can view a list of all submitted `CustomItem`s.**
-- [ ] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
-- [ ] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
-- [ ] **Users can update or delete `CustomItem`s that have been created from the detail page.**
+- [x] **The web app uses React to display data from the API.**
+- [x] **The web app is connected to a PostgreSQL database, with an appropriately structured `CustomItem` table.**
+  - [x] **NOTE: Your walkthrough added to the README must include a view of your Render dashboard demonstrating that your Postgres database is available**
+  - [x] **NOTE: Your walkthrough added to the README must include a demonstration of your table contents. Use the psql command 'SELECT \* FROM tablename;' to display your table contents.**
+- [x] **Users can view **multiple** features of the `CustomItem` (e.g. car) they can customize, (e.g. wheels, exterior, etc.)**
+- [x] **Each customizable feature has multiple options to choose from (e.g. exterior could be red, blue, black, etc.)**
+- [x] **On selecting each option, the displayed visual icon for the `CustomItem` updates to match the option the user chose.**
+- [x] **The price of the `CustomItem` (e.g. car) changes dynamically as different options are selected _OR_ The app displays the total price of all features.**
+- [x] **The visual interface changes in response to at least one customizable feature.**
+- [x] **The user can submit their choices to save the item to the list of created `CustomItem`s.**
+- [x] **If a user submits a feature combo that is impossible, they should receive an appropriate error message and the item should not be saved to the database.**
+- [x] **Users can view a list of all submitted `CustomItem`s.**
+- [x] **Users can edit a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
+- [x] **Users can delete a submitted `CustomItem` from the list view of submitted `CustomItem`s.**
+- [x] **Users can update or delete `CustomItem`s that have been created from the detail page.**
 
 The following **optional** features are implemented:
 
@@ -40,24 +40,29 @@ The following **additional** features are implemented:
 
 Here's a walkthrough of implemented required features:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-<!-- Replace this with whatever GIF tool you used! -->
-
-GIF created with ... GIF tool here
-
-<!-- Recommended tools:
-[Kap](https://getkap.co/) for macOS
-[ScreenToGif](https://www.screentogif.com/) for Windows
-[peek](https://github.com/phw/peek) for Linux. -->
+[![Video Here](https://cdn.loom.com/sessions/thumbnails/d83092b510164791921e5d318e7321d9-851cdd9dfaf70dd4-full-play.gif#t=0.1)](https://www.loom.com/share/d83092b510164791921e5d318e7321d9)
 
 ## Notes
 
-Describe any challenges encountered while building the app or any additional context you'd like to add.
+### Database & Backend
+
+- Running the reset script to create and seed the `custom_items` table, which initially failed due to missing data files and incorrect import paths
+- Resolving a port conflict (`EADDRINUSE`) where the server kept crashing because port 3000 was already occupied by a previous process that wasn't properly terminated. I realized npm run dev was configured to already run the server, so I didn't need to manually run it myself.
+
+### API & Routing
+
+- A naming inconsistency between route parameters (`id` vs `itemId`) across the router, controller, and frontend that caused requests to fail silently
+- The Vite proxy forwarding `/custom-items` to the backend even on page refresh, causing the browser to return raw JSON instead of loading the React app — resolved by prefixing all API routes with `/api`
+- Navigation links using plain `<a>` tags instead of React Router's `Link`, which caused full page reloads that bypassed the frontend routing entirely
+
+### Frontend
+
+- The `EditCar` page threw a JSON parse error on delete because the DELETE endpoint returns no response body, but the frontend was trying to parse it as JSON anyway
+- Managing state across multiple customizable features while keeping the price calculation and live preview in sync
 
 ## License
 
-Copyright [yyyy] [name of copyright owner]
+Copyright [2026] [Lucy Bernard]
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
